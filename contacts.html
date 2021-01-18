@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+
+
+<?php
+	session_start();
+?>
+
+
+
+	<html>
+
+
+
+		<head>
+
+			<title> Christian Dsouza CV Contact Retrieval </title>
+
+			<link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+			<meta charset="utf-8">
+
+			<script src="https://kit.fontawesome.com/03c9e93e5a.js" crossorigin="anonymous"></script>
+
+		</head>
+
+		<body>
+
+
+
+<!--Nav Bar-->
+
+			<div class="sidebar-contacts" id="sidebar-contacts">
+				<p id="home-sidebar">
+				<a href="#item1"><i class="fa fa-arrow-up" id="up" title="Return to Top" style='color:#A3A3A; font-size: 16px'></i></a>
+				<a href="index.php"><i class="fas fa-home" title="Home" style='color:#A3A3A; font-size: 16px'></i></a>
+				<a href="logout.php"><i class="fas fa-sign-out-alt" title="Logout" style='color:#A3A3A; font-size: 16px'></i></a>
+			</div>
+
+<script>
+
+	up.addEventListener('click', function (e) {
+		e.preventDefault();
+		window.scrollTo({
+			top: 0, behavior: 'smooth'
+		});
+	});
+
+</script>
+
+<!--End Nav Bar-->
+
+
+
+<!--Title-->
+
+			<div class="grid-container">
+				<div class="item1">
+					<p id="contacts-page-title">CONTACTS (FORM SUBMISSIONS)</p>
+				</div>
+			<div>
+
+<!--End Title-->
+
+
+
+<?php
+	if($_SESSION["name"]) {
+?>
+
+<!--Results Table-->
+
+<?php
+	$conn = new mysqli("localhost", "myuser", "mypass", "mydb");
+	$sql = "SELECT * FROM contacts";
+	$result = $conn->query($sql);
+	if ($result->num_rows > 0) {
+		echo
+		"<table class='contacts'>
+			<tr id='contacts-titles'>
+				<td id='contacts-firstname'>FIRST NAME</td>
+				<td id='contacts-lastname'>LAST NAME</td>
+				<td id='contacts-company'>COMPANY</td>
+				<td id='contacts-phone'>PHONE</td>
+				<td id='contacts-mobile'>MOBILE</td>
+				<td id='contacts-email'>EMAIL</td>
+				<td id='contacts-position'>POSITION</td>
+			</tr>";
+		while($row = $result->fetch_assoc()) {
+			echo
+			"<tr>
+				<td id='contacts-data'>".$row["firstname"]."</td>
+				<td id='contacts-data'>".$row["lastname"]."</td>
+				<td id='contacts-data'>".$row["company"]."</td>
+				<td id='contacts-data'>".$row["phone"]."</td>
+				<td id='contacts-data'>".$row["mobile"]."</td>
+				<td id='contacts-data'>".$row["email"]."</td>
+				<td id='contacts-data'>".$row["position"]."</td>
+			</tr>"
+		;}
+		echo "</table>";
+		} else {
+		echo "<p id='null-table'>No entries recorded.</p>";
+	}
+	$conn->close();
+?>
+
+<!--Results Table-->
+
+<?php
+	}else echo "<p id='contacts-login'><a href='login.php'><i class='fas fa-sign-in-alt' id='contacts-login-icon' title='Admin Login' style='color:#A3A3A3; font-size:'16px'></i></a></p>";
+?>
+
+
+
+		</body>
+
+
+
+	</html>

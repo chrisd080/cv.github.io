@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+
+
+	<html>
+
+
+
+		<head>
+
+			<title> Christian Dsouza CV Homepage </title>
+
+			<link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+			<meta charset="utf-8">
+
+			<script src="https://kit.fontawesome.com/03c9e93e5a.js" crossorigin="anonymous"></script>
+
+		</head>
+	
+	
+	
+		<body>
+
+
+
+<!--Nav Bar-->
+
+			<div class="sidebar-main" id="sidebar-main">
+				<p id="personal-profile-sidebar"></p>
+				<a href="#item2"><i class="fas fa-user" title="Personal Profile" style='color:#A3A3A3; font-size:'16px'></i></a>
+				<a href="#item3"><i class="fas fa-graduation-cap" title="Education" style='color:#A3A3A3; font-size:'16px'></i></a>
+				<a href="#item4"><i class="fas fa-cogs" title="Skills" style='color:#A3A3A3; font-size:'16px'></i></a>
+				<a href="#item5"><i class="fas fa-briefcase" title="Employment" style='color:#A3A3A3; font-size:'16px'></i></a>
+				<a href="#item6"><i class="fas fa-heart" title="Interests" style='color:#A3A3A3; font-size:'16px'></i></a>
+				<a href="#item1"><i class="fas fa-arrow-up" id="up" title="Return to Top" style='color:#A3A3A3; font-size:'16px'></i></a>
+				<a href="index3.html"><i class="fas fa-book" title="My Portfolio" style='color:#A3A3A3; font-size:'16px'></i></a>
+				<a href="Christian's CV.pdf" download="Christian's CV.pdf"><i class="fas fa-file-download" title="Download CV" style='color:#A3A3A3; font-size: 16px'></i></a>
+				<a href="#myModal"><i class="fas fa-phone-alt" id="modal-window" title="Contact" style='color:#A3A3A3; font-size:'16px'></i></a>
+				<a href="https:www.linkedin.com/in/ christian--dsouza/" target="_blank"><i class="fab fa-linkedin" title="LinkedIn" style='color:#A3A3A3; font-size:'16px'></i></a>
+				<a href="login.php"><i class="fas fa-sign-in-alt" title="Admin Login" style='color:#A3A3A3; font-size:'16px'></i></a>
+			</div>
+
+<script>
+	sidebar = document.getElementById("sidebar-main");
+	window.onscroll = function() {
+		scrollFunction()
+	};				
+	function scrollFunction() {
+		if (document.body.scrollTop > 410 || document.documentElement.scrollTop > 410) {
+			sidebar.style.display = "block";
+			} else {
+				sidebar.style.display = "none";
+			}
+	}
+	up.addEventListener('click', function (e) {
+		e.preventDefault();
+		window.scrollTo({
+			top: 0, behavior: 'smooth'
+		});
+	});
+</script>
+
+			<div id="myModal" class="modal">
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<div class="modal-header">
+						<p>GET IN TOUCH</p>
+					</div>
+					<div class="modal-body">
+						<form method="post">
+							<label for="first-name">First Name:</label>
+							<input type="text" id="first-name" name="firstname"><br />
+							<label for="last-name">Last Name:</label>
+							<input type="text" id="last-name" name="lastname"><br />
+							<label for="company">Company:</label>
+							<input type="text" id="company" name="company"><br />
+							<label for="phone">Phone:</label>
+							<input type="text" id="phone" name="phone"><br />
+							<label for="mobile">Mobile:</label>
+							<input type="text" id="mobile" name="mobile"><br />
+							<label for="email">Email:</label>
+							<input type="text" id="email" name="email"><br />
+							<input type="radio" id="position" name="position" value="Employer">
+							<label for="pemployer">Employer</label>
+							<input type="radio" id="position" name="position" value="Recruiter">
+							<label for="precruiter">Recruiter</label><br />
+							<div class="submit-button">
+								<input type="submit" name="submit" value="submit">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+<script>
+	var modal = document.getElementById("myModal");
+	var btn = document.getElementById("modal-window");
+	var span = document.getElementsByClassName("close")[0];
+	btn.onclick = function() {
+		modal.style.display = "block";
+	}
+	span.onclick = function() {
+		modal.style.display = "none";
+	}
+</script>
+
+<?php
+	$conn = mysqli_connect("localhost", "myuser", "mypass", "mydb");
+	if (isset($_POST['submit'])){
+		$q = mysqli_prepare($conn, "INSERT INTO contacts (firstname, lastname, company, phone, mobile, email, position) VALUES (?, ?, ?, ?, ?, ?, ?)");
+		mysqli_stmt_bind_param($q, "sssssss", $_REQUEST['firstname'], $_REQUEST['lastname'], $_REQUEST['company'], $_REQUEST['phone'], $_REQUEST['mobile'], $_REQUEST['email'], $_REQUEST['position']);
+		mysqli_stmt_execute($q);
+	}
+?>
+
+<!--End Nav Bar-->
+
+
+
+<!--Title-->
+
+			<div class="grid-container">
+				<div class="item1">
+					<header>
+						<p id="hello-world">HELLO, WORLD.</p>	
+						<p id="name">I AM CHRISTIAN DSOUZA</p>
+						<p id="major-qualifications">| 3rd year Bachelor of Intereaction design major student..Also minoring in design for Social Innovation |</p>
+						<p id="navigation-icons">
+							<a href="Christian's CV.pdf" download="Christian's CV.pdf"><i class="fas fa-file-download" title="Download CV" style='color:#A3A3A; font-size: 16px'></i></a>
+							&nbsp &nbsp &nbsp
+							<a href="#myModal"><i class="fas fa-phone-alt" id="modal-window" title="Contact" style='color:#A3A3A; font-size: 16px'></i></a>
+							&nbsp &nbsp &nbsp
+							<a href="https:www.linkedin.com/in/ christian--dsouza/" target="_blank"><i class="fab fa-linkedin" title="LinkedIn" style='color:#A3A3A; font-size: 16px'></i></a>
+						</p>
+						<div class="navigation-menu">
+							<button onclick="menuClick()" class="navigation-menu-button">more about me</button>
+							<br />
+							<div id="navigation-drop" class="navigation-options">
+								<a href="#item2">Personal Profile</a>
+								<a href="#item3">Education</a>
+								<a href="#item4">Skills</a>
+								<a href="#item5">Employment</a>
+								<a href="#item6">Interests</a>
+							</div>
+						</div>
+					</header>
+				</div>
+
+<script>
+	function menuClick() {
+		document.getElementById("navigation-drop").classList.toggle("show");
+	}
+	window.onclick = function(event) {
+		if (!event.target.matches('.navigation-menu-button')) {
+			var dropdowns = document.getElementsByClassName("navigation-options");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) {
+					openDropdown.classList.remove('show');
+				}
+			}
+		}
+	}
+	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+		anchor.addEventListener('click', function (e) {
+			var dropdowns = document.getElementsByClassName("navigation-options");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				var openDropdown = dropdowns[i];
+				if (openDropdown.classList.contains('show')) {
+					openDropdown.classList.remove('show');
+				}
+			}
+			e.preventDefault();
+			document.querySelector(this.getAttribute('href')).scrollIntoView({
+				behavior: 'smooth'
+			});
+		});
+	});
+</script>
+
+<!--End Title-->
+
+
+
+<!--Personal Profile-->
+
+				<div class="item2" id="item2">
+					<div class="personal-profile">
+						<p id="personal-profile-title"><i class="fas fa-user" style='color:#B60E62; font-size: 20px'></i>&nbsp; PERSONAL PROFILE</p>
+						<p id="personal-profile-body">I chose to study Interaction design for reasons of achieving my highest grades in that field of study and my understanding for IT Design is a lot more than any other subjects. Due to this, I very much studying this Subject/course and hope to establish a career in this field of work in the future. I am very knowledgeable about Web design in terms of HTML and CSS coding (not so much Javascript) and enjoy this to an extent however what i enjoy the most is the research and psychology that goes into the designs as this is also very much my strongest point of work in my Interaction Design major. Not many people are into writing long paragraphs of design research being in the design field and always want to get stuck into the actual designing. However, my biggest strength of this field of work is my ability to research and develop ideas and i am able to understand and take on board user critiques and turn them into an improved design. To this role, I am hoping to bring inspiration and desire to meet user needs and motivations through creful and through research involving the internet and physical surveying,surveilling, etc. Working with a team to implement this work would be great as well due to the need for different intakes and directions from peers proving more of an inspiration for ideas (and I love working in a team). I am motivated and eager to work and learn in a Web Research and Development job and will bring hardwork and dedication.</p>
+					</div>
+				</div>
+
+<!--End Personal Profile-->
+
+
+
+<!--Education-->
+
+				<div class="item3" id="item3">
+					<div class="education">
+						<p id="education-title"><i class="fas fa-graduation-cap" style='color:#B60E62; font-size: 20px'></i>&nbsp; EDUCATION</p>
+						<div class="education-body">
+							<table id="education-table">
+								<tr id="institution">
+									<td id="1">Victoria University of Wellington</td>
+									<td id="2">Bachelor of Interaction Design - major</td>
+									<td id="3"><span id="italic">e.</span> 2021</td>
+								</tr>
+								<tr id="details">
+									<td colspan="3"><span id="bullet">&#8226;</span>&nbsp; Design psychology, concepts and techniques; based on User-experience design.</td>
+								</tr>
+
+								<tr id="institution">
+									<td id="1">Victoria University of Wellington</td>
+									<td id="2">Bachelor of Design for Social Innovation - minor</td>
+									<td id="3"><span id="italic">e.</span> 2021</td>
+								</tr>
+								<tr id="details">
+									<td colspan="3"><span id="bullet">&#8226;</span>&nbsp; How to design sustainably, focussing on direct environmental impact; based on Environmental design.</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+
+<!--End Education-->
+
+
+
+<!--Skills-->
+
+				<div class="item4" id="item4">
+					<div class="skills">
+						<p id="skills-title"><i class="fas fa-cogs" style='color:#B60E62; font-size: 20px'></i>&nbsp; SKILLS & EXPERIENCE</p>
+						<div class="skills-body">
+							<table id="skills-table">
+								<tr id="traits">
+									<td>Interaction Design</td>
+									<td>User Experience (UX)</td>
+									<td>Usabilty Testing</td>
+									<td>UX Research and Writing</td>
+								</tr>
+								<tr id="ratings">
+									<td>&#10687; &#10687; &#10687; &#10686; &#10686</td>
+									<td>&#10687; &#10687; &#10687; &#10686; &#10686</td>
+									<td>&#10687; &#10687; &#10687; &#10686; &#10686</td>
+									<td>&#10687; &#10687; &#10687; &#10687; &#10686</td>
+								</tr>
+								<tr id="traits">
+									<td>Customer Service</td>
+									<td>Graphic Design</td>
+									<td>HTML and CSS</td>
+								</tr>
+								<tr id="ratings">
+									<td>&#10687; &#10687; &#10687; &#10687; &#10686</td>
+									<td>&#10687; &#10687; &#10687; &#10686; &#10686</td>
+									<td>&#10687; &#10686; &#10686; &#10686; &#10686</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+
+<!--End Skills & Experience-->
+
+
+		
+<!--Employment-->
+
+				<div class="item5" id="item5">
+					<div class="employment">
+						<p id="employment-title"><i class="fas fa-briefcase" style='color:#B60E62; font-size: 20px'></i>&nbsp; EMPLOYMENT</p>
+						<div class="timeline">
+					
+							<div class="container left">
+								<div class="content">
+									<p id="job-title">Converse (Authentic Factory Outlet) Tawa <br />Casual Retail Assistant <br /> March 2019 - October 2020</p>
+									<ul>
+										<li>Built on Personal Development and Teamworking skills from my ex-curricular activities and Studies.</li>
+										<li>Excellent customer service to a variety of customers through face-to-face and phone mediums.</li>
+										<li>Dealt with confidential information and work-related issues in a calm and secure manner.</li>
+										<li>Minor Data entry/Administration/Sending and Recieving emails, duties.</li>
+									</ul>
+								</div>
+							</div>
+							<div class="container right">
+								<div class="content">
+									<p id="job-title">Under Armour [Agi Australasia LTD.]<br />Part-time Sales Assistant<br />October 2020 - Present</p>
+									<ul>
+										<li>Building on my Excellent customer service to a variety of customers through a face-to-face and phone medium.</li>
+										<li>Consistently exceeded key performance indicators and sales targets at an individual and team level. (Achieving overall higher conversion rates as a team compared to last year)</li>
+										<li>More significant job roles on Part-time compred to Casual Contract and have enjoyed/gained a larger skillset working in a retail environment</li>
+										<li>Part-time Managed a team and dealt with customer issues in the absence of a manager (and when we didnt have a manager in my first couple weeks working here).</li>
+										<li>Encouraged, supported and helped team members to perform to company standards - Acheiving KPI targets consistently and keeping the store product rich and appealing.</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+<!--End Employment-->
+
+
+
+<!--Interests-->
+
+				<div class="item6" id="item6">
+					<div class="interests">
+						<p id="interests-title"><i class="fas fa-heart" style='color:#B60E62; font-size: 20px'></i>&nbsp; INTERESTS</p>
+						<div class="interests-body">
+							<table id="interests-table">
+								<tr id="icons">
+									<td><i class="fas fa-running" style='color:#A3A3A3; font-size: 32px'></i></td>
+									<td><i class="fas fa-dumbbell" style='color:#A3A3A3; font-size: 32px'></i></td>
+									<td><i class="fas fa-futbol" style='color:#A3A3A3; font-size: 32px'></i></td>
+									<td><i class="fas fa-heartbeat" style='color:#A3A3A3; font-size: 32px'></i></td>
+								</tr>
+								<tr id="icons">
+									<td><i class="fas fa-music" style='color:#A3A3A3; font-size: 32px'></i></td>
+									<td><i class="fas fa-book-reader" style='color:#A3A3A3; font-size: 32px'></i></td>
+									<td><i class="fas fa-car" style='color:#A3A3A3; font-size: 32px'></i></td>
+									<td><i class="fas fa-globe-americas" style='color:#A3A3A3; font-size: 32px'></i></td>
+								</tr>
+							</table>
+						</div>	
+					</div>	
+				</div>
+			</div>
+
+<!--End Interests-->
+
+
+
+		</body>
+	
+
+	
+	</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+
+
+	<html>
+
+
+
+	<head>
+
+		<title> Mary-Ellen Miranda CV Logout </title>
+
+		<link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+		<meta charset="utf-8">
+
+		<script src="https://kit.fontawesome.com/03c9e93e5a.js" crossorigin="anonymous"></script>
+
+	</head>
+
+
+
+	<body>
+
+<?php
+	session_start();
+	unset($_SESSION["id"]);
+	unset($_SESSION["name"]);
+	header("Location:http://localhost/first/");
+?>
+
+	</body>
+
+
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+
+
+	<html>
+
+
+
+		<head>
+
+			<title> Christian Dsouza CV Login </title>
+
+			<link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+			<meta charset="utf-8">
+
+			<script src="https://kit.fontawesome.com/03c9e93e5a.js" crossorigin="anonymous"></script>
+
+		</head>
+
+
+
+		<body>
+	
+<!--Title-->
+
+			<div class="grid-container">
+				<div class="item1">
+					<p id="login-page-title">ADMIN LOGIN</p>
+				</div>
+			<div>
+
+<!--End Title-->
+
+			<div class="login-form">
+				<form method="post" action="">
+					<label for="username">Username:</label>
+					<br>
+					<input type="text" name="user_name">
+					<br>
+					<label for="password">Password:</label>
+					<br>
+					<input type="password" name="password">
+					<br><br>
+					<div class="submit-button">
+						<input type="submit" name="submit" value="Submit">
+					</div>
+				</form>
+			</div>
+
+<?php
+	session_start();
+	$message="";
+	if(count($_POST)>0) {
+		$conn = mysqli_connect("localhost", "myuser", "mypass", "mydb") or die('Unable To connect');
+		$result = mysqli_query($conn,"SELECT * FROM login_user WHERE user_name='" . $_POST["user_name"] . "' and password = '". $_POST["password"]."'");
+		$row  = mysqli_fetch_array($result);
+		if(is_array($row)) {
+			$_SESSION["name"] = $row['name'];
+			header("Location:http://localhost/first/contacts.php");
+		} else {
+			$message = "Invalid Username or Password!";
+		}
+	}
+	if(isset($_SESSION["id"])) {
+		header("Location:contacts.php");
+	}
+?>
+
+	</body>
+
+
+
+	</html>
